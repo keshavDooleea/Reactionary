@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
+import Includes from "./include";
+import Search from "./search";
+import Main from "./main";
+import Header from "./header";
+import HeaderComments from "./headerComments";
 import "./App.css";
-require("dotenv").config();
+require("dotenv/config");
 
 function App() {
   // API key from dotenv
   const APP_KEY = process.env.REACT_APP_API_KEY;
 
   // states
-  const [search, setSearch] = useState("meat");
+  const [search, setSearch] = useState("food");
   const [data, setData] = useState([]);
 
   // refetch data when rendering
@@ -21,24 +26,38 @@ function App() {
     const response = await fetch(url);
     const json = await response.json();
     setData([json]);
-    console.log(json);
+    console.log("json");
   };
 
   return (
     <div className="App">
-      <div className="header"></div>
+      <Header />
 
-      <ol>
-        {data.map(item => (
-          <li key={item[0].meta.id}>{item[0].meta.id}</li>
-        ))}
-      </ol>
+      <HeaderComments />
 
-      <div>
-        {data.map(item => (
-          <p key={item[0].shortdef[0]}>{item[0].shortdef[0]}</p>
-        ))}
-      </div>
+      <Includes dictionary="<dictionary.h>" print="<stdio.h>" />
+
+      <Search openingBrace="{" />
+
+      <Main openingBrace="{" />
+
+      {/* <div className="up">
+        <ol>
+          {data.map(item =>
+            item.map(search => <li key={search.meta.id}>{search.meta.id}</li>)
+          )}
+        </ol>
+
+        <div>
+          {data.map(item =>
+            item.map(search =>
+              search.shortdef.map(def => <p key={def}>{def}</p>)
+            )
+          )}
+        </div>
+      </div> */}
+
+      <p className="initials">RD</p>
     </div>
   );
 }
