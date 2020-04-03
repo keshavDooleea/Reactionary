@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Includes from "./include";
 import Search from "./search";
 import Main from "./main";
-import Header from "./header";
 import HeaderComments from "./headerComments";
+import Terminal from "./terminal";
 import "./App.css";
 require("dotenv/config");
 
@@ -14,6 +14,7 @@ function App() {
   // states
   const [search, setSearch] = useState("food");
   const [data, setData] = useState([]);
+  const [openTerminal, setTerminal] = useState(false);
 
   // refetch data when rendering
   // [] : fetch only once when refreshing page
@@ -26,38 +27,45 @@ function App() {
     const response = await fetch(url);
     const json = await response.json();
     setData([json]);
-    console.log("json");
+    console.log([json]);
   };
 
   return (
     <div className="App">
-      <Header />
+      {/* Run button opens Terminal */}
+      <div className="page_header">
+        <p
+          className="run"
+          onClick={() => {
+            setTerminal(!openTerminal);
+          }}
+        >
+          RUN
+        </p>
+        <p className="reactionary">Reactionary - Dictionary App</p>
+      </div>
 
-      <HeaderComments />
+      <div className="editor">
+        {/* Instructions comment */}
+        <HeaderComments />
 
-      <Includes dictionary="<dictionary.h>" print="<stdio.h>" />
+        {/* #include<dictionary.h>
+            #include<stdio.h> // for printf, scanf */}
+        <Includes dictionary="<dictionary.h>" print="<stdio.h>" />
 
-      <Search openingBrace="{" />
+        {/* printWord function */}
+        <Search openingBrace="{" />
 
-      <Main openingBrace="{" />
+        {/* int main */}
+        <Main openingBrace="{" />
 
-      {/* <div className="up">
-        <ol>
-          {data.map(item =>
-            item.map(search => <li key={search.meta.id}>{search.meta.id}</li>)
-          )}
-        </ol>
+        {/* RD */}
+        <p className="initials">RD</p>
+      </div>
 
-        <div>
-          {data.map(item =>
-            item.map(search =>
-              search.shortdef.map(def => <p key={def}>{def}</p>)
-            )
-          )}
-        </div>
-      </div> */}
-
-      <p className="initials">RD</p>
+      <div className={openTerminal ? "terminal open" : "terminal close"}>
+        <Terminal openTerminal />
+      </div>
     </div>
   );
 }
