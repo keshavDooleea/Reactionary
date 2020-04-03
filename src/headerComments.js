@@ -7,7 +7,7 @@ function HeaderComments() {
       <p className="comments">/*</p>
       <p className="comment_space comments">* Reetesh Dooleea</p>
       <p className="comment_space comments">
-        * Instructions: Press Run to search for your word in terminal
+        * Instructions: Press Run to search for your word
       </p>
       <p className="comment_space comments">*/</p>
     </div>

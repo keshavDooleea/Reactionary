@@ -61,8 +61,6 @@ function Main(props) {
         <span className="comments"> // keyboard input</span>
       </p>
 
-      <p className="break"></p>
-
       <p className="main_p">
         {/* printWord(array); */}
         <span className="function_name">printWord</span>
