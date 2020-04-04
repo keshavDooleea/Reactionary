@@ -57,7 +57,6 @@ function Search(props) {
         <span className="function_text">*definition</span>
         <span className="function_sec_symbols">)</span>
         <span className="function_symbols">;</span>
-        <span className="comments"> // prints definition & synonyms</span>
       </p>
 
       <p className="main_p">
@@ -74,7 +73,7 @@ function Search(props) {
         <span className="function_sec_symbols">)</span>
         <span className="function_symbols">;</span>
 
-        <span className="comments"> // clears buffer & definition</span>
+        <span className="comments"> // deallocates memory</span>
       </p>
 
       <p>

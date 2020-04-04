@@ -6,7 +6,7 @@ function HeaderComments() {
     <div className="header">
       <p className="comments">/*</p>
       <p className="comment_space comments">
-        * Instructions: Press Run to search the definition of your word
+        * Press Run or Ctrl+Shift+` to search for the definition of your word
       </p>
       <p className="comment_space comments">*/</p>
     </div>

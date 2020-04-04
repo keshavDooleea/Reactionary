@@ -111,7 +111,7 @@ function Output() {
             </ol>
           </div>
           <div className="definition">
-            <p>Synonym: </p>
+            <p>Synonyms: </p>
             <ol className="synonym_ol">
               {data.map((array) =>
                 array[0].meta.syns.map((syn) =>

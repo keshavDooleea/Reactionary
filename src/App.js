@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import KeyboardEventHandler from "react-keyboard-event-handler";
 import Includes from "./include";
 import Search from "./search";
 import Main from "./main";
@@ -16,8 +17,19 @@ function App() {
     document.getElementsByClassName("input_text")[0].focus();
   }
 
+  // x button pressed
+  function closeTerminal() {
+    setTerminal(!openTerminal);
+    document.getElementsByClassName("App")[0].focus();
+  }
+
   return (
     <div className="App">
+      {/* multiple keys pressed */}
+      <KeyboardEventHandler
+        handleKeys={["ctrl+shift+`"]}
+        onKeyEvent={toggleTerminal}
+      />
       {/* Run button opens Terminal */}
       <div className="page_header">
         <p className="run" onClick={toggleTerminal}>
@@ -25,7 +37,6 @@ function App() {
         </p>
         <p className="reactionary">Reactionary - Dictionary App</p>
       </div>
-
       <div className="editor" onClick={() => setTerminal(false)}>
         {/* Instructions comment */}
         <HeaderComments />
@@ -43,9 +54,8 @@ function App() {
         {/* RD */}
         <p className="initials">RD</p>
       </div>
-
       <div className={openTerminal ? "terminal open" : "terminal close"}>
-        <p className="close_btn" onClick={toggleTerminal}>
+        <p className="close_btn" onClick={closeTerminal}>
           X
         </p>
 
