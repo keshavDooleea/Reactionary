@@ -5,47 +5,28 @@ import Main from "./main";
 import HeaderComments from "./headerComments";
 import Terminal from "./terminal";
 import "./App.css";
-require("dotenv/config");
 
 function App() {
-  // API key from dotenv
-  const APP_KEY = process.env.REACT_APP_API_KEY;
-
   // states
-  const [search, setSearch] = useState("food");
-  const [data, setData] = useState([]);
   const [openTerminal, setTerminal] = useState(false);
 
-  // refetch data when rendering
-  // [] : fetch only once when refreshing page
-  useEffect(() => {
-    getRequest();
-  }, []);
-
-  const getRequest = async () => {
-    let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${search}?key=${APP_KEY}`;
-    const response = await fetch(url);
-    const json = await response.json();
-    setData([json]);
-    console.log([json]);
-  };
+  // open/close terminal
+  function toggleTerminal() {
+    setTerminal(!openTerminal);
+    document.getElementsByClassName("input_text")[0].focus();
+  }
 
   return (
     <div className="App">
       {/* Run button opens Terminal */}
       <div className="page_header">
-        <p
-          className="run"
-          onClick={() => {
-            setTerminal(!openTerminal);
-          }}
-        >
+        <p className="run" onClick={toggleTerminal}>
           RUN
         </p>
         <p className="reactionary">Reactionary - Dictionary App</p>
       </div>
 
-      <div className="editor">
+      <div className="editor" onClick={() => setTerminal(false)}>
         {/* Instructions comment */}
         <HeaderComments />
 
@@ -53,7 +34,7 @@ function App() {
             #include<stdio.h> // for printf, scanf */}
         <Includes dictionary="<dictionary.h>" print="<stdio.h>" />
 
-        {/* printWord function */}
+        {/* defineWord function */}
         <Search openingBrace="{" />
 
         {/* int main */}
@@ -64,7 +45,11 @@ function App() {
       </div>
 
       <div className={openTerminal ? "terminal open" : "terminal close"}>
-        <Terminal openTerminal />
+        <p className="close_btn" onClick={toggleTerminal}>
+          X
+        </p>
+
+        <Terminal />
       </div>
     </div>
   );

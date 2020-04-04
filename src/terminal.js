@@ -1,28 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./App.css";
+import Output from "./output";
+import Information from "./info";
 
-function Terminal(props) {
+function Terminal() {
   return (
     <div>
-      <p className="close_btn" onClick={() => {}}>
-        X
-      </p>
-
-      {/* <div className="up">
-        <ol>
-          {data.map(item =>
-            item.map(search => <li key={search.meta.id}>{search.meta.id}</li>)
-          )}
-        </ol>
-
-        <div>
-          {data.map(item =>
-            item.map(search =>
-              search.shortdef.map(def => <p key={def}>{def}</p>)
-            )
-          )}
-        </div>
-      </div> */}
+      <div>
+        <Tabs className="Tabs">
+          <TabList className="tablist">
+            <Tab className="tab">TERMINAL</Tab>
+            <Tab className="tab">INFORMATION</Tab>
+          </TabList>
+          <TabPanel>
+            <Output />
+          </TabPanel>
+          <TabPanel>
+            <Information />
+          </TabPanel>
+        </Tabs>
+      </div>
     </div>
   );
 }

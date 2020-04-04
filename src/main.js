@@ -37,18 +37,6 @@ function Main(props) {
       <p className="break"></p>
 
       <p className="main_p">
-        {/* printf("Enter your word: "); */}
-        <span className="function_name">printf</span>
-        <span className="function_sec_symbols">(</span>
-        <span className="function_symbols">"</span>
-        <span className="function_text">Enter your word: </span>
-        <span className="function_symbols">"</span>
-        <span className="function_sec_symbols">)</span>
-        <span className="function_symbols">;</span>
-        <span className="comments"> // one word search</span>
-      </p>
-
-      <p className="main_p">
         {/* scanf("%s", array); */}
         <span className="function_name">scanf</span>
         <span className="function_sec_symbols">(</span>
@@ -62,8 +50,8 @@ function Main(props) {
       </p>
 
       <p className="main_p">
-        {/* printWord(array); */}
-        <span className="function_name">printWord</span>
+        {/* defineWord(array); */}
+        <span className="function_name">defineWord</span>
         <span className="function_sec_symbols">(</span>
         <span className="function_text">&array</span>
         <span className="function_sec_symbols">)</span>

@@ -154,3 +154,80 @@ p {
 .terminal.open {
   transform: scaleY(1);
 }
+
+.tab_panel {
+  height: 57vh;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.tablist {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #676e95;
+  font-size: 20px;
+  box-shadow: -2px -2px 5px rgba(29, 32, 46, 0.1),
+    3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.tab {
+  cursor: pointer;
+  list-style: none;
+}
+
+.output {
+  padding: 10px 0 0 10px;
+}
+
+.command {
+  color: #c1e1d9;
+  display: flex;
+}
+
+.command input {
+  border: none;
+  outline: none;
+  font-family: "Consolas";
+  font-size: 16px;
+  color: #89ddff;
+  background-color: #1b1e2b;
+}
+
+.error_msg {
+  color: #f05a51;
+  padding: 5px 0 0 0;
+}
+
+.suggestion {
+  color: #c3e88d;
+}
+
+.definition {
+  display: flex;
+  font-size: 16px;
+  padding: 5px 0 0 0;
+  color: #76aaff;
+}
+
+.definition_ol {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  color: #676e95;
+  padding: 2px;
+}
+
+.synonym_ol {
+  display: flex;
+  list-style: none;
+  color: #676e95;
+  padding: 2px;
+  flex-wrap: wrap;
+}
+.synonym_ol li {
+  padding-right: 12px;
+}
