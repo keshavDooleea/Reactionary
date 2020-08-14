@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
+import ReactDOM from "react-dom";
 require("dotenv/config");
 
 function Output() {
@@ -11,6 +12,7 @@ function Output() {
   const [data, setData] = useState([]);
   const [typing, setTyping] = useState("");
   const [dataFetched, setDataFetch] = useState(false);
+  const [counter, setCounter] = useState(0);
 
   // refetch data when rendering
   // [] : fetch only once when refreshing page
@@ -20,7 +22,7 @@ function Output() {
   }, [search]);
 
   const getRequest = async () => {
-    let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${search}?key=${APP_KEY}`;
+    let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${search}?key=2ec8f629-bc3b-4716-98a1-3e9c63737aac`;
     const response = await fetch(url);
     const json = await response.json();
     setData([json]);
@@ -39,10 +41,11 @@ function Output() {
   };
 
   // enter key is pressed
-  const h = (e) => {
+  const enterPressed = (e) => {
     e.preventDefault();
     setSearch(typing);
-    document.getElementsByClassName("input_text")[0].focus();
+    document.getElementsByClassName("input_text")[counter].focus();
+    // setCounter(counter + 1);
   };
 
   // search for word def
@@ -131,7 +134,7 @@ function Output() {
     <div className="tab_panel" onClick={panelClicked}>
       <div className="output">
         <div className="command">
-          <form onSubmit={h}>
+          <form onSubmit={enterPressed}>
             c:\dooleea\reactionary>
             <input
               type="text"
